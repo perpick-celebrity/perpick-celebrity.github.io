@@ -19,7 +19,7 @@ function create_fragment(ctx) {
 			div = element("div");
 			attr(div, "data-size", "large");
 			attr(div, "class", "fb-share-button");
-			attr(div, "data-href", "https://www.perpick.github.io");
+			attr(div, "data-href", "https://www.perpick-celebrity.github.io");
 			attr(div, "data-layout", "button");
 			attr(div, "data-lazy", div_data_lazy_value = true);
 		},

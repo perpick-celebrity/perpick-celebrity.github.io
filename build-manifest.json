@@ -360,7 +360,7 @@
       "imports": []
     },
     "dist/components/KakaoShareBtn.svelte.js": {
-      "bytes": 2305,
+      "bytes": 2345,
       "imports": [
         {
           "path": "_snowpack/env.js",
@@ -381,7 +381,7 @@
       ]
     },
     "dist/pages/Home.svelte.js": {
-      "bytes": 17064,
+      "bytes": 17074,
       "imports": [
         {
           "path": "dist/pages/Home.svelte.css",
@@ -1155,10 +1155,10 @@
           "bytesInOutput": 0
         },
         "dist/components/KakaoShareBtn.svelte.js": {
-          "bytesInOutput": 1296
+          "bytesInOutput": 1336
         },
         "dist/pages/Home.svelte.js": {
-          "bytesInOutput": 7991
+          "bytesInOutput": 8001
         },
         "dist/pages/Results.svelte.css": {
           "bytesInOutput": 0
@@ -1299,7 +1299,7 @@
           "bytesInOutput": 139
         }
       },
-      "bytes": 143971
+      "bytes": 144021
     },
     "../~~bundle~~/dist/index.css": {
       "imports": [],
