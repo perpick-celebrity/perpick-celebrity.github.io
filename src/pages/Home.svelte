@@ -162,7 +162,7 @@
           >
           <span class="m-0">, See source&nbsp;</span>
           <a
-            href="https://github.com/perpick/perpick.github.io"
+            href="https://github.com/perpick/perpick-celebrity.github.io"
             target="_blank"
             class="text-purple-300 hover:text-purple-400"
           >

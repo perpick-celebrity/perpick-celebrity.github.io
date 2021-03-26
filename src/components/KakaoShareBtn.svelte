@@ -18,8 +18,8 @@
           description: "나만을 위한 향수를 추천받으세요! #나만의향수 #인공지능 #추천 #분위기 #추억 #기념일",
           imageUrl: "http://k.kakaocdn.net/dn/Fz36y/btqYHTDb7l2/FAbm5E6xyXB3nMVjWu1Prk/kakaolink40_original.jpg",
           link: {
-            mobileWebUrl: "https://perpick.github.io",
-            webUrl: "https://perpick.github.io",
+            mobileWebUrl: "https://perpick-celebrity.github.io",
+            webUrl: "https://perpick-celebrity.github.io",
           },
         },
         social: {
@@ -31,8 +31,8 @@
           {
             title: "당장 추천받아 보기",
             link: {
-              mobileWebUrl: "https://perpick.github.io",
-              webUrl: "https://perpick.github.io",
+              mobileWebUrl: "https://perpick-celebrity.github.io",
+              webUrl: "https://perpick-celebrity.github.io",
             },
           },
         ],
