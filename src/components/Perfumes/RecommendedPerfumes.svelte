@@ -3,7 +3,7 @@
   import Perfume from "./Perfume.svelte";
 
   export let perfumes: Perfumes;
-
+  console.log(perfumes);
   let sources: PerfumeSource[] = JSON.parse(perfumes.results.sources);
 </script>
 

@@ -2,6 +2,7 @@ import mbtis from "@src/constants/mbtis.json";
 import tags from "@src/constants/mbti_tags.json";
 import titles from "@src/constants/titles.json";
 import genders from "@src/constants/gender_tags.json";
+import celebrities from "@src/constants/titles.json";
 
 export const getDescription = (mbti: string | undefined) =>
   mbti ? mbtis.find((m) => m.mbti === mbti) : undefined;
@@ -28,3 +29,6 @@ export const getTitle = (title: string | undefined) =>
 
 export const getGender = (gender: string | undefined) =>
   gender ? genders.find((g) => g.type === gender) : undefined;
+
+// export const getCelebruty = (name: string) => celebrities.find(c => c.name === name)
+export const getCelebruty = (name: string) => celebrities.find(c => c.title === name)

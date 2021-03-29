@@ -1,4 +1,6 @@
 /** @type {import("snowpack").SnowpackUserConfig } */
+// const rollupPluginSvelte = require('rollup-plugin-svelte');
+
 module.exports = {
 	extends: "@snowpack/app-scripts-svelte",
 	alias: {
@@ -20,6 +22,15 @@ module.exports = {
 	packageOptions: {
 		installTypes: true,
 		polyfillNode: true,
+		// rollup: {
+		// 	plugins: [
+		// 		rollupPluginSvelte({
+		// 			compilerOptions: {
+		// 				dev: process.env.NODE_ENV !== 'production',
+		// 			}
+		// 		}),
+		// 	],
+		// },
 	},
 	devOptions: {
 		port: 57829,

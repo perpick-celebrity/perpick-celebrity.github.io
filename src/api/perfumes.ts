@@ -60,7 +60,36 @@ const Apis = {
               }
             }            
           }	            
-    })
+    }),
+    getTotalWitjCelebrity: (): AxiosPromise<number> => 
+      Request({
+        url: "perfume/generate/celebrity",
+        method: "GET",
+      }),
+      getPerfumesWithCelebrity: ({  select, match, filter }: {  select:{ value: string, label: string; group: string }, match: string[], filter: Filter}): AxiosPromise<Perfumes> => 
+        Request({
+          url: "perfume/generate/celebrity",
+          method: "POST",
+          data: {
+            select: JSON.stringify(select),
+            search : {
+              body: {
+                query: {
+                  bool: {
+                    should: [
+                      { match: { reviews: { query: match.join(" ")} } }
+                    ],
+                    filter: {
+                      terms: {
+                        ...filter
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+        }),
 }
 
 export default Apis

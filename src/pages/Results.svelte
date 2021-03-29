@@ -1,71 +1,27 @@
 <script lang="ts">
   import { users } from "@src/stores";
-  import { PC } from "@src/utils";
   import API from "@src/api/perfumes";
 
-  import Title from "@src/components/Title/Title.svelte";
-  import MBTI from "@src/components/MBTI/MBTI.svelte";
+  import Celebrity from "@src/components/Celebrity/Celebrity.svelte";
   import RecommendedPerfumes from "@src/components/Perfumes/RecommendedPerfumes.svelte";
   import IntersectionObserver from "@src/components/Image/IntersectionObserver.svelte";
   import type { Filter } from "@src/models";
+  import { getCelebruty } from "@src/utils/PerfumeCalc/PerfumeCalc";
 
-  const getTagInStrArrLen = (a: string[], t: string) =>
-    a.filter((s) => s === t).length;
+  let celebrity = getCelebruty($users.select.value);
 
-  const EL = getTagInStrArrLen($users.selects, "E");
-  const IL = getTagInStrArrLen($users.selects, "I");
-  const EnI = EL > IL ? "E" : "I";
-  const SL = getTagInStrArrLen($users.selects, "S");
-  const NL = getTagInStrArrLen($users.selects, "N");
-  const SnN = SL > NL ? "S" : "N";
-  const TL = getTagInStrArrLen($users.selects, "T");
-  const FL = getTagInStrArrLen($users.selects, "F");
-  const TnF = TL > FL ? "T" : "F";
-  const JL = getTagInStrArrLen($users.selects, "J");
-  const PL = getTagInStrArrLen($users.selects, "P");
-  const JnP = JL > PL ? "J" : "P";
-  const mbti = `${EnI}${SnN}${TnF}${JnP}`;
-  const descriptions = PC.getDescription(mbti);
-  const tags = PC.getTagsWithAttr(mbti);
-
-  const gender = PC.getGender(
-    $users.selects.find((select) => select === "MALE" || select === "FEMALE"),
-  );
-  const title = PC.getTitle(
-    $users.selects.find(
-      (select) =>
-        select === "dawn" ||
-        select === "morning" ||
-        select === "afternoon" ||
-        select === "evening",
-    ),
-  );
-
-  const getPerfumes = async ({
-    match,
-    filter,
-  }: {
-    match: string[];
-    filter: Filter;
-  }) => {
-    await new Promise((resolve) => setTimeout(resolve, 2000));
-    return API.getPerfumes({
-      email: $users.email,
-      selects: $users.selects,
+  const getPerfumes = async ({ match, filter }: { match: string[]; filter: Filter }) => {
+    return API.getPerfumesWithCelebrity({
+      select: $users.select,
       match,
       filter,
     });
   };
 </script>
 
-{#if title && gender && tags && descriptions}
-  {#await getPerfumes({
-    match: [...title.tags, ...tags],
-    filter: { gender: gender.tags },
-  })}
-    <div
-      class="w-full h-full fixed block top-0 left-0 bg-pp-50 opacity-75 z-50"
-    >
+{#if celebrity}
+  {#await getPerfumes({ match: [""], filter: { gender: "" } })}
+    <div class="w-full h-full fixed block top-0 left-0 bg-pp-50 opacity-75 z-50">
       <div class="h-full flex justify-center pb-4 flex-col items-center">
         <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
           <circle cx="50" cy="50" r="45" stroke="#FFC2D8" />
@@ -75,16 +31,10 @@
   {:then perfumes}
     <IntersectionObserver>
       <div class="pt-4 bg-white mb-4 shadow-lg m-4 rounded">
-        <div
-          style={`background-color: ${title.bg_color}`}
-          class="p-2 title_shadow"
-        >
-          <!-- <Gender gender={gender} /> -->
-          <Title {title} {descriptions} />
+        <div style={`background-color: ${"title.bg_color"}`} class="p-2 title_shadow">
+          <Celebrity {celebrity} />
         </div>
-        <MBTI {descriptions} {tags} /><RecommendedPerfumes
-          perfumes={perfumes.data}
-        />
+        <RecommendedPerfumes perfumes={perfumes.data} />
       </div>
     </IntersectionObserver>
   {/await}
