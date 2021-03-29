@@ -1,0 +1,12 @@
+export const SNOWPACK_PUBLIC_GA_TAG_MANAGER_ID = "GTM-T54Z7FL";
+export const SNOWPACK_PUBLIC_DEV_API_URL = "https://dev.perpick.me/";
+export const SNOWPACK_PUBLIC_PROD_API_URL = "https://dev.perpick.me/";
+export const SNOWPACK_PUBLIC_PP_USERNAME = "rjs1197";
+export const SNOWPACK_PUBLIC_PP_PASSWORD = "audwls_12";
+export const SNOWPACK_PUBLIC_ES_URL = "https://es.perpick.me/";
+export const SNOWPACK_PUBLIC_ES_USERNAME = "elastic";
+export const SNOWPACK_PUBLIC_ES_PASSWORD = "perpickalpha12!@";
+export const SNOWPACK_PUBLIC_KAKAO_KEY = "8252aece734df8c54acbd44fd3e444ca";
+export const MODE = "production";
+export const NODE_ENV = "production";
+export const SSR = false;
