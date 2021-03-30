@@ -1,5 +1,6 @@
 <script lang="ts">
   import { onMount } from "svelte";
+  import _ from "lodash";
   import { nav, users } from "@src/stores";
   import Result from "@src/pages/Results.svelte";
   import IntersectionObserver from "@src/components/Image/IntersectionObserver.svelte";
@@ -13,17 +14,19 @@
   import Typewriter from "@src/components/Typewriter/Typewriter.svelte";
   import Select from "@src/components/svelte-select";
 
-  const items: {
-    value: string;
-    label: string;
-    group: string;
-  }[] = [
-    { value: "chocolate", label: "Chocolate", group: "Sweet" },
-    { value: "pizza", label: "Pizza", group: "Savory" },
-    { value: "cake", label: "Cake", group: "Sweet" },
-    { value: "chips", label: "Chips", group: "Savory" },
-    { value: "ice-cream", label: "Ice Cream", group: "Sweet" },
-  ];
+  import celebrities from "@src/constants/celebrities.json";
+
+  const items = _.uniqBy(
+    celebrities
+      .sort((a, b) => (a.idol_name > b.idol_name ? -1 : 1))
+      .sort((a, b) => (a.idol_group > b.idol_group ? 1 : -1))
+      .map((c) => ({
+        value: c.idol_name,
+        label: c.idol_name,
+        group: c.idol_group,
+      })),
+    "value",
+  );
 
   onMount(() => {
     $users.select = {
@@ -53,6 +56,7 @@
   const handleSelect = (event: { detail: { value: string; label: string; group: string } }) => {
     $users.select = event.detail;
   };
+
   const handleClearSelect = () => {
     console.log("clear");
     $users.select = { value: "", label: "", group: "" };
@@ -65,12 +69,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet" />
 </svelte:head>
 <div class="w-full max-w-xs wrap ">
-  <header
-    class="m-4  cursor-pointer"
-    on:click={() => {
-      $nav.current = "home";
-    }}
-  >
+  <header class="m-4  cursor-pointer" on:click={() => {}}>
     <IntersectionObserver>
       <RoundedEmbed src="/banner.svg" alt="logo" type="image/svg+xml" />
     </IntersectionObserver>

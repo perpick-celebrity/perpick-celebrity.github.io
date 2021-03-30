@@ -54,7 +54,21 @@ export type PerfumeDocument = {
   sources: string;
 };
 
+export type PerfumeCelebrityDocument = {
+  _id: string;
+  ids: string[];
+  select: string;
+  maxScore: number;
+  search: string;
+  sources: string;
+};
+
 export type Perfumes = {
   results: PerfumeDocument;
+  total: number;
+};
+
+export type PerfumesWithCelebrity = {
+  results: PerfumeCelebrityDocument;
   total: number;
 };

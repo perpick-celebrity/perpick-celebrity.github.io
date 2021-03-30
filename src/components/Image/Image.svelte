@@ -14,7 +14,7 @@
   });
 </script>
 
-<img {src} {alt} class:loaded bind:this={thisImage} />
+<img {src} {alt} class:loaded class="mx-auto my-4" bind:this={thisImage} />
 
 <style>
   img {

@@ -3,7 +3,7 @@ import type { AxiosPromise } from "axios"
 import Request from "@src/utils/HttpClient"
 import config from "@src/config/config"
 
-import type { Filter, Perfumes, SearchedPerfume } from '@src/models'
+import type { Filter, Perfumes, SearchedPerfume, PerfumesWithCelebrity } from '@src/models'
 
 const Apis = {
   getTotal: (): AxiosPromise<number> => 
@@ -66,7 +66,7 @@ const Apis = {
         url: "perfume/generate/celebrity",
         method: "GET",
       }),
-      getPerfumesWithCelebrity: ({  select, match, filter }: {  select:{ value: string, label: string; group: string }, match: string[], filter: Filter}): AxiosPromise<Perfumes> => 
+      getPerfumesWithCelebrity: ({  select, match }: {  select:{ value: string, label: string; group: string }, match: string[],}): AxiosPromise<PerfumesWithCelebrity> => 
         Request({
           url: "perfume/generate/celebrity",
           method: "POST",
@@ -79,11 +79,6 @@ const Apis = {
                     should: [
                       { match: { reviews: { query: match.join(" ")} } }
                     ],
-                    filter: {
-                      terms: {
-                        ...filter
-                      }
-                    }
                   }
                 }
               }

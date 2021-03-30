@@ -1,43 +1,56 @@
 <script lang="ts">
+  import { beforeUpdate } from "svelte";
   import { users } from "@src/stores";
   import API from "@src/api/perfumes";
 
   import Celebrity from "@src/components/Celebrity/Celebrity.svelte";
   import RecommendedPerfumes from "@src/components/Perfumes/RecommendedPerfumes.svelte";
   import IntersectionObserver from "@src/components/Image/IntersectionObserver.svelte";
-  import type { Filter } from "@src/models";
+  import type { PerfumesWithCelebrity } from "@src/models";
   import { getCelebruty } from "@src/utils/PerfumeCalc/PerfumeCalc";
+  import type { AxiosResponse } from "axios";
 
-  let celebrity = getCelebruty($users.select.value);
+  let changed = false;
+  let perfumes: AxiosResponse<PerfumesWithCelebrity> | undefined;
 
-  const getPerfumes = async ({ match, filter }: { match: string[]; filter: Filter }) => {
+  beforeUpdate(async () => {
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    changed = false;
+  });
+
+  users.subscribe(async (users) => {
+    if (users.select.value) {
+      let celebrity = getCelebruty(users.select.value);
+      if (celebrity) {
+        changed = true;
+        perfumes = await getPerfumes({ match: celebrity.keywords.map((k) => k.keyword) });
+      }
+    }
+  });
+
+  const getPerfumes = async ({ match }: { match: string[] }) => {
     return API.getPerfumesWithCelebrity({
       select: $users.select,
       match,
-      filter,
     });
   };
 </script>
 
-{#if celebrity}
-  {#await getPerfumes({ match: [""], filter: { gender: "" } })}
-    <div class="w-full h-full fixed block top-0 left-0 bg-pp-50 opacity-75 z-50">
-      <div class="h-full flex justify-center pb-4 flex-col items-center">
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="50" cy="50" r="45" stroke="#FFC2D8" />
-        </svg>
-      </div>
+{#if changed}
+  <div class="w-full h-full fixed block top-0 left-0 bg-pp-50 opacity-75 z-50">
+    <div class="h-full flex justify-center pb-4 flex-col items-center">
+      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="50" cy="50" r="45" stroke="#FFC2D8" />
+      </svg>
     </div>
-  {:then perfumes}
-    <IntersectionObserver>
-      <div class="pt-4 bg-white mb-4 shadow-lg m-4 rounded">
-        <div style={`background-color: ${"title.bg_color"}`} class="p-2 title_shadow">
-          <Celebrity {celebrity} />
-        </div>
-        <RecommendedPerfumes perfumes={perfumes.data} />
-      </div>
-    </IntersectionObserver>
-  {/await}
+  </div>
+{:else if perfumes}
+  <div class="pt-4 bg-white mb-4 shadow-lg m-4 rounded">
+    <div style={`background-color: ${"title.bg_color"}`} class="p-2 title_shadow">
+      <Celebrity />
+    </div>
+    <RecommendedPerfumes perfumes={perfumes.data} />
+  </div>
 {/if}
 
 <style>

@@ -11,5 +11,6 @@ export type {
   PerfumeSource,
   PerfumeDocument,
   SearchedPerfume,
+  PerfumesWithCelebrity
 } from "./Perfumes";
 export type { Auth } from "./Auth";
