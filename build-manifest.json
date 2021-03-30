@@ -230,7 +230,7 @@
       ]
     },
     "dist/components/Celebrity/Celebrity.svelte.js": {
-      "bytes": 9499,
+      "bytes": 9448,
       "imports": [
         {
           "path": "dist/components/Celebrity/Celebrity.svelte.css",
@@ -1125,7 +1125,7 @@
           "bytesInOutput": 622
         },
         "dist/components/Celebrity/Celebrity.svelte.js": {
-          "bytesInOutput": 2898
+          "bytesInOutput": 2877
         },
         "dist/components/Perfumes/RecommendedPerfumes.svelte.css": {
           "bytesInOutput": 0
@@ -1296,7 +1296,7 @@
           "bytesInOutput": 139
         }
       },
-      "bytes": 748047
+      "bytes": 748026
     },
     "../~~bundle~~/dist/index.css": {
       "imports": [],
