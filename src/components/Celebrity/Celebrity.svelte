@@ -24,7 +24,7 @@
       <div class="my-4">
         <p>소속사: {celebrity.agency}</p>
         {#if celebrity.idol_group}
-          <span>`그룹: ${celebrity.idol_group}`</span>
+          <span>그룹: {celebrity.idol_group}</span>
         {/if}
         {#each celebrity.keywords as keyword}
           <p>{keyword.keyword}</p>
