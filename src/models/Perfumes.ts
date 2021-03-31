@@ -1,6 +1,8 @@
+export type Note ={title: string, count:number}
+
 export type PerfumeSource = {
-  base_main: string;
-  base_sub: string[];
+  base_main: Note;
+  base_sub: Note[];
   brand: string;
   density: string;
   gender: string;
@@ -8,13 +10,13 @@ export type PerfumeSource = {
   launching_month: string;
   launching_year: string;
   main_scent: string[];
-  middle_main: string;
-  middle_sub: string[];
+  middle_main: Note;
+  middle_sub: Note[];
   reviews: string[];
   sub_scent: string[];
   title: string;
-  top_main: string;
-  top_sub: string[];
+  top_main: Note;
+  top_sub: Note[];
 };
 
 export type Perfume = {
