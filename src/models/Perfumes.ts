@@ -1,7 +1,11 @@
 export type Note ={title: string, count:number}
+export type Scent ={title: string, count:number}
+export type Season = {winter: number, spring: number, summer: number, fall: number}
+export type Sillage = {soft: number, moderate: number, heavy: number, enourmous: number}
 
 export type PerfumeSource = {
   base_main: Note;
+  kor_title: string;
   base_sub: Note[];
   brand: string;
   density: string;
@@ -17,6 +21,10 @@ export type PerfumeSource = {
   title: string;
   top_main: Note;
   top_sub: Note[];
+  feeling_scents: Scent[]
+  season: Season
+  sillage:Sillage
+  type: string
 };
 
 export type Perfume = {

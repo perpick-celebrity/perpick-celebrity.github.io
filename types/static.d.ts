@@ -58,3 +58,4 @@ declare module '*.png' {
 
 /* CUSTOM: ADD YOUR OWN HERE */
 declare module 'svelte-forms'
+declare module 'd3'

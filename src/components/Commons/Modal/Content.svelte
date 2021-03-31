@@ -1,15 +1,31 @@
 <script lang="ts">
+  import type { Note, Scent, Season, Sillage } from "@src/models/Perfumes";
+
   import { getContext } from "svelte";
   import PopupLong from "./PopupLong.svelte";
 
   export let title: string,
     image: string,
-    rows: { title: string; content: string[] }[];
+    name: string,
+    brand: string,
+    rows: {
+      title: string;
+      content: string[];
+    }[],
+    notes: {
+      top: Note[];
+      middle: Note[];
+      base: Note[];
+    },
+    scents: Scent[],
+    gender: string,
+    season: Season,
+    sillage: Sillage;
 
   const { open } = getContext("simple-modal");
 
   const showPopupLong = () => {
-    open(PopupLong, { image, rows });
+    open(PopupLong, { image, rows, name, brand, notes, scents, gender, season, sillage });
   };
 </script>
 
