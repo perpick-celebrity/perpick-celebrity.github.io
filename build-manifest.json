@@ -159,7 +159,7 @@
       "imports": []
     },
     "dist/constants/celebrities.json.proxy.js": {
-      "bytes": 494869,
+      "bytes": 481654,
       "imports": []
     },
     "dist/utils/PerfumeCalc/PerfumeCalc.js": {
@@ -1107,7 +1107,7 @@
           "bytesInOutput": 0
         },
         "dist/constants/celebrities.json.proxy.js": {
-          "bytesInOutput": 569798
+          "bytesInOutput": 554195
         },
         "dist/utils/PerfumeCalc/PerfumeCalc.js": {
           "bytesInOutput": 38
@@ -1296,7 +1296,7 @@
           "bytesInOutput": 139
         }
       },
-      "bytes": 748026
+      "bytes": 732423
     },
     "../~~bundle~~/dist/index.css": {
       "imports": [],
