@@ -77,11 +77,11 @@
   <section class="divide-y-2 divide-pink-200">
     <main>
       <div class="mx-6 my-4">
-        <Typewriter interval={125} delay={1000}>
+     <!--   <Typewriter interval={125} delay={1000}>
           <p class="text-xs font-thin my-1">
             이 서비스를 통해 약 {total}번 추천되었어요!
           </p>
-        </Typewriter>
+        </Typewriter> -->
         <div class="themedSearch text-left">
           <Select
             {items}
